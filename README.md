@@ -1,2 +1,2 @@
 # book-shop
- app for manging a book shop
+ app for managing a book shop
