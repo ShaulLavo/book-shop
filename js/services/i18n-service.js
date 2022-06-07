@@ -39,15 +39,45 @@ var gTrans = {
 		es: 'enviar',
 		he: 'שלח'
 	},
-	sure: {
-		en: 'Are you sure?',
+	'create-new-book': {
+		en: 'Create new book',
 		es: 'Estas Seguru?',
 		he: 'בטוח נשמה?'
 	},
-	'add-todo-placeholder': {
-		en: 'What needs to be done?',
-		es: 'Que te tienes que hacer?',
-		he: 'מה יש לעשות?'
+	descending: {
+		en: 'descending',
+		es: 'descendiendo',
+		he: 'סדר יורד?'
+	},
+	'sort-by': {
+		en: 'Sort by',
+		es: 'Ordenar por',
+		he: 'מיין לפי'
+	},
+	rate: {
+		en: 'Rate',
+		es: 'Velocidad',
+		he: 'ציון'
+	},
+	'max-price': {
+		en: 'Max Price',
+		es: 'Precio máximo',
+		he: 'מחיר מקסימלי'
+	},
+	'min-rate': {
+		en: 'Min Rate',
+		es: 'calificar mínima',
+		he: 'ציון מינימלי'
+	},
+	'enter-title-placeholder': {
+		en: 'Enter Book title',
+		es: 'Ingrese el título del libro',
+		he: 'הזן את שם הספר'
+	},
+	'enter-price-placeholder': {
+		en: 'Enter Book Price',
+		es: 'Ingrese el precio del libro',
+		he: 'הזן את מחיר הספר'
 	}
 }
 
