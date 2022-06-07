@@ -4,7 +4,7 @@ var gTrans = {
 		es: 'Bienvenida a mi librería',
 		he: 'ברוכים הבאים לחנות שלי'
 	},
-	id: {
+	Id: {
 		en: 'Id',
 		es: 'Id',
 		he: 'ת.ז'
@@ -19,7 +19,7 @@ var gTrans = {
 		es: 'Precio',
 		he: 'מחיר'
 	},
-	actions: {
+	Actions: {
 		en: 'Actions',
 		es: 'accións',
 		he: 'פעולות'
@@ -37,7 +37,7 @@ var gTrans = {
 	Delete: {
 		en: 'Delete',
 		es: 'Borrar',
-		he: 'לִמְחוֹק'
+		he: 'למחוק'
 	},
 	submit: {
 		en: 'submit',
@@ -45,9 +45,9 @@ var gTrans = {
 		he: 'שלח'
 	},
 	'create-new-book': {
-		en: 'Create new book',
-		es: 'Crear nuevo libro',
-		he: 'צור ספר חדש'
+		en: 'Create new book:',
+		es: 'Crear nuevo libro:',
+		he: ':צור ספר חדש'
 	},
 	descending: {
 		en: 'descending',
@@ -64,15 +64,25 @@ var gTrans = {
 		es: 'Velocidad',
 		he: 'ציון'
 	},
+	language: {
+		en: 'language:',
+		es: 'Velocidad:',
+		he: ':שפה'
+	},
+	'dark-mode': {
+		en: 'dark mode:',
+		es: 'modo oscuro:',
+		he: ':מצב כהה'
+	},
 	'max-price': {
-		en: 'Max Price',
-		es: 'Precio máximo',
-		he: 'מחיר מקסימלי'
+		en: 'Max Price:',
+		es: 'Precio máximo:',
+		he: ':מחיר מקסימלי'
 	},
 	'min-rate': {
-		en: 'Min Rate',
-		es: 'calificar mínima',
-		he: 'ציון מינימלי'
+		en: 'Min Rate:',
+		es: 'calificar mínima:',
+		he: ':ציון מינימלי'
 	},
 	'title-placeholder': {
 		en: 'Enter Book title',
@@ -103,7 +113,6 @@ function doTrans() {
 	els.forEach((el) => {
 		var transKey = el.dataset.trans
 		var txt = getTrans(transKey)
-		console.log(txt)
 		if (el.localName === 'input') {
 			el.placeholder = txt
 		} else el.innerText = txt
@@ -114,31 +123,6 @@ function setLang(lang) {
 	gCurrLang = lang // he
 }
 
-function formatNumOlder(num) {
-	return num.toLocaleString('es')
-}
-
-function formatNum(num) {
-	return new Intl.NumberFormat(gCurrLang).format(num)
-}
-
 function formatCurrency(num) {
 	return new Intl.NumberFormat('he-IL', { style: 'currency', currency: 'ILS' }).format(num)
-}
-
-function formatDate(time) {
-	var options = {
-		year: 'numeric',
-		month: 'short',
-		day: 'numeric',
-		hour: 'numeric',
-		minute: 'numeric',
-		hour12: true
-	}
-
-	return new Intl.DateTimeFormat(gCurrLang, options).format(time)
-}
-
-function kmToMiles(km) {
-	return km / 1.609
 }

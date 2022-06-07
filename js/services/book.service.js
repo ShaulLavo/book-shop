@@ -76,10 +76,11 @@ function getPage(books) {
 
 function getActionBtnStr(id) {
 	const actions = ['Read', 'Update', 'Delete']
+	const btnClass = ['btn btn-info', 'btn btn-primary', 'btn btn-danger']
 	var str = ''
-	for (const action of actions) {
-		str += `<button onclick="on${action}('${id}')" data-trans="${action}" class="${action}">${action}</button>`
-	}
+	actions.forEach((action, i) => {
+		str += `<button onclick="on${action}('${id}')" data-trans="${action}" class="${btnClass[i]}">${action}</button>`
+	})
 	return str
 }
 

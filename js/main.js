@@ -6,35 +6,46 @@ function init() {
 	} else gBooks = loadFromStorage('books')
 	renderFilterByQueryStringParams()
 	gBooks.sort(_sortBooks)
+	renderTableHeader()
 	renderBooks()
 }
 function renderBooks() {
 	const books = getBooksForDisplay()
-	const headers = ['Id', 'Title', 'Price', 'Actions']
-	var headStr = '<tr>'
-	headers.forEach((header) => {
-		if (header === 'Title') {
-			var headerVal = 'title' //value to sort by for buttons
-			// template strings are static so you have to generate a new one each time
-			return (headStr += `<th>${header} ${getBtnTemplate(headerVal)}</th>`)
-		}
-		if (header === 'Price') {
-			var headerVal = 'price'
-			return (headStr += `<th>${header} ${getBtnTemplate(headerVal)}</th>`)
-		}
-		return (headStr += `<th>${header}</th>`)
-	})
-	headStr += '</tr>'
-
 	var bodyStr = ''
 	for (var book of books) {
 		const actions = getActionBtnStr(book.id)
 		bodyStr += `<tr><td>${book.id}</td><td class ="title">${book.title} </td><td>${book.price}</td><td>${actions}</td></tr>`
 	}
-	const tableHead = document.querySelector('.book-table thead')
 	const tableBody = document.querySelector('.book-table tbody')
-	tableHead.innerHTML = headStr
 	tableBody.innerHTML = bodyStr
+}
+
+function renderTableHeader() {
+	const tableHead = document.querySelector('.book-table thead')
+	tableHead.innerHTML = getHeaderStr()
+}
+
+function getHeaderStr() {
+	const headers = ['Id', 'Title', 'Price', 'Actions']
+	var headStr = '<tr>'
+	headers.forEach((header) => {
+		if (header === 'Title') {
+			var headerVal = 'title'
+			// template strings are static so you have to generate a new one each time
+			return (headStr += `<th data-trans= ${headerVal} >${header} ${getBtnTemplate(
+				headerVal
+			)}</th>`)
+		}
+		if (header === 'Price') {
+			var headerVal = 'price'
+			return (headStr += `<th data-trans = ${headerVal}>${header} ${getBtnTemplate(
+				headerVal
+			)}</th>`)
+		}
+		return (headStr += `<th data-trans=${header}>${header}</th>`)
+	})
+	headStr += '</tr>'
+	return headStr
 }
 
 function getBooksForDisplay() {
@@ -100,7 +111,7 @@ function onDelete(id) {
 	removeBook(id)
 }
 
-function updateBook(bookId) {
+function onUpdate(bookId) {
 	const elTitle = document.querySelector('[name=add-book-title]')
 	const elPrice = document.querySelector('[name=add-book-price]')
 	gCurrBook = getBook(bookId)
@@ -248,14 +259,17 @@ function onNextPage() {
 
 function onSetLang(lang) {
 	setLang(lang)
-	if (lang === 'he') {
-		document.body.classList.add('rtl')
-		const body = document.querySelector('body')
-		body.style.fontFamily = `'Varela Round', sans-serif`
-	} else {
-		document.body.classList.remove('rtl')
-		const body = document.querySelector('body')
-		body.style.fontFamily = `'Spline Sans Mono', monospace`
-	}
+	if (lang === 'he') document.body.classList.add('rtl')
+	else document.body.classList.remove('rtl')
+
 	doTrans()
+}
+
+function onDarkMode(elBtn) {
+	const elTable = document.querySelector('.book-table')
+	const body = document.querySelector('body')
+	elTable.classList.toggle('table-dark')
+	body.classList.toggle('dark')
+	if (elBtn.innerText === '🌚') elBtn.innerText = '🌞'
+	else elBtn.innerText = '🌚'
 }

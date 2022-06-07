@@ -13,6 +13,7 @@
 </head>
 
 <body onload="init()" onkeydown="handleKeyDown(event)">
+
     <div class="table-container">
         <h1 data-trans="header-title">Welcome to my bookshop</h1>
         <span data-trans="descending">descending:</span>
@@ -43,7 +44,7 @@
             <div><button data-trans="submit" class="input-btn" onclick="onGetInput()">submit</button>
             </div>
         </div>
-        <table class="book-table">
+        <table class="book-table table">
             <thead> </thead>
             <tbody></tbody>
         </table>
@@ -65,11 +66,16 @@
         <button class="close-modal-btn" onclick="onCloseModal(this.parentElement)">Back</button>
     </div>
     <div class="trans-container">
+        <p data-trans="language">language:</p>
         <select onchange="onSetLang(this.value)">
             <option value="en">English</option>
             <option value="he">עברית</option>
             <option value="es">Spanish</option>
         </select>
+    </div>
+    <div class="dark-mode">
+        <span data-trans="dark-mode">dark mode:</span>
+        <button class="dark-mode-btn btn" onclick="onDarkMode(this)">🌚</button>
     </div>
     <script src="lib/jquery/jquery.js"></script>
     <script src="js/services/i18n-service.js"></script>
