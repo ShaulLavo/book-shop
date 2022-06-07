@@ -1,5 +1,5 @@
 var gTrans = {
-	title: {
+	'header-title': {
 		en: 'Welcome to my bookshop',
 		es: 'Bienvenida a mi librería',
 		he: 'ברוכים הבאים לחנות שלי'
@@ -24,15 +24,20 @@ var gTrans = {
 		es: 'accións',
 		he: 'פעולות'
 	},
-	read: {
+	Read: {
 		en: 'Read',
 		es: 'Leer',
 		he: 'לקרוא'
 	},
-	update: {
+	Update: {
 		en: 'Update',
 		es: 'actualizar',
 		he: 'עדכון'
+	},
+	Delete: {
+		en: 'Delete',
+		es: 'Borrar',
+		he: 'לִמְחוֹק'
 	},
 	submit: {
 		en: 'submit',
@@ -41,8 +46,8 @@ var gTrans = {
 	},
 	'create-new-book': {
 		en: 'Create new book',
-		es: 'Estas Seguru?',
-		he: 'בטוח נשמה?'
+		es: 'Crear nuevo libro',
+		he: 'צור ספר חדש'
 	},
 	descending: {
 		en: 'descending',
@@ -69,12 +74,12 @@ var gTrans = {
 		es: 'calificar mínima',
 		he: 'ציון מינימלי'
 	},
-	'enter-title-placeholder': {
+	'title-placeholder': {
 		en: 'Enter Book title',
 		es: 'Ingrese el título del libro',
 		he: 'הזן את שם הספר'
 	},
-	'enter-price-placeholder': {
+	'price-placeholder': {
 		en: 'Enter Book Price',
 		es: 'Ingrese el precio del libro',
 		he: 'הזן את מחיר הספר'
@@ -98,10 +103,9 @@ function doTrans() {
 	els.forEach((el) => {
 		var transKey = el.dataset.trans
 		var txt = getTrans(transKey)
-
+		console.log(txt)
 		if (el.localName === 'input') {
-			el.setAttribute('placeholder', txt)
-			// el.placeholder = txt
+			el.placeholder = txt
 		} else el.innerText = txt
 	})
 }

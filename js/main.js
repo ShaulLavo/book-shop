@@ -1,7 +1,7 @@
 'use strict'
 
 function init() {
-	if (!localStorage.getItem('books')|| localStorage.getItem('books') === '[]') {
+	if (!localStorage.getItem('books') || localStorage.getItem('books') === '[]') {
 		createBooksDef()
 	} else gBooks = loadFromStorage('books')
 	renderFilterByQueryStringParams()
@@ -9,21 +9,10 @@ function init() {
 	renderBooks()
 }
 function renderBooks() {
-	saveToStorage('books', gBooks) //save last rendered state to localStorage
-	var books = getFilteredBooks()
-	if (gIsBookmark) books = getBookmarked(books)
-	if (books.length > MAX_TABLE_SIZE) {
-		//handle pages
-		books = getPage(books)
-		renderPageBtns()
-	} else {
-		gPageCount = 0 //just to remove the btn in single page
-		renderPageBtns()
-	}
+	const books = getBooksForDisplay()
 	const headers = ['Id', 'Title', 'Price', 'Actions']
 	var headStr = '<tr>'
 	headers.forEach((header) => {
-		
 		if (header === 'Title') {
 			var headerVal = 'title' //value to sort by for buttons
 			// template strings are static so you have to generate a new one each time
@@ -39,13 +28,28 @@ function renderBooks() {
 
 	var bodyStr = ''
 	for (var book of books) {
-		const actions = `<button onclick="onRead('${book.id}')" class="$read">Read</button><button onclick="onUpdateBook('${book.id}')" class="$update">Update</button><button onclick="onDelete('${book.id}')" class="$delete">Delete</button>`
+		const actions = getActionBtnStr(book.id)
 		bodyStr += `<tr><td>${book.id}</td><td class ="title">${book.title} </td><td>${book.price}</td><td>${actions}</td></tr>`
 	}
 	const tableHead = document.querySelector('.book-table thead')
 	const tableBody = document.querySelector('.book-table tbody')
 	tableHead.innerHTML = headStr
 	tableBody.innerHTML = bodyStr
+}
+
+function getBooksForDisplay() {
+	saveToStorage('books', gBooks) //save last rendered state to localStorage
+	var books = getFilteredBooks()
+	if (gIsBookmark) books = getBookmarked(books)
+	if (books.length > MAX_TABLE_SIZE) {
+		//handle pages
+		books = getPage(books)
+		renderPageBtns()
+	} else {
+		gPageCount = 0 //just to remove the btn in single page
+		renderPageBtns()
+	}
+	return books
 }
 
 function renderPageBtns() {
@@ -96,7 +100,7 @@ function onDelete(id) {
 	removeBook(id)
 }
 
-function onUpdateBook(bookId) {
+function updateBook(bookId) {
 	const elTitle = document.querySelector('[name=add-book-title]')
 	const elPrice = document.querySelector('[name=add-book-price]')
 	gCurrBook = getBook(bookId)
@@ -240,4 +244,18 @@ function onNextPage() {
 	if (gCurrPage === gPageCount - 1) return
 	gCurrPage++
 	renderBooks()
+}
+
+function onSetLang(lang) {
+	setLang(lang)
+	if (lang === 'he') {
+		document.body.classList.add('rtl')
+		const body = document.querySelector('body')
+		body.style.fontFamily = `'Varela Round', sans-serif`
+	} else {
+		document.body.classList.remove('rtl')
+		const body = document.querySelector('body')
+		body.style.fontFamily = `'Spline Sans Mono', monospace`
+	}
+	doTrans()
 }

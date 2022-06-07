@@ -74,6 +74,15 @@ function getPage(books) {
 	return books[gCurrPage]
 }
 
+function getActionBtnStr(id) {
+	const actions = ['Read', 'Update', 'Delete']
+	var str = ''
+	for (const action of actions) {
+		str += `<button onclick="on${action}('${id}')" data-trans="${action}" class="${action}">${action}</button>`
+	}
+	return str
+}
+
 function createBook(title, price) {
 	if (isNaN(price)) price = 0
 	if (price > 1000) {

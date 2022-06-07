@@ -14,30 +14,33 @@
 
 <body onload="init()" onkeydown="handleKeyDown(event)">
     <div class="table-container">
-        <h1>Welcome to my bookshop</h1>
-        <span>descending:<input type="checkbox" oninput="onSetDescSort()"></span>
+        <h1 data-trans="header-title">Welcome to my bookshop</h1>
+        <span data-trans="descending">descending:</span>
+        <input type="checkbox" oninput="onSetDescSort()">
         <select onchange="onSortBy(this.value)">
-            <option selected hidden>Sort by</option>
-            <option value="title">Title</option>
-            <option value="price">Price</option>
-            <option value="rate">Rate</option>
+            <option data-trans="sort-by" selected hidden>Sort by</option>
+            <option data-trans="title" value="title">Title</option>
+            <option data-trans="price" value="price">Price</option>
+            <option data-trans="rate" value="rate">Rate</option>
         </select>
         <label>
-            Max Price:
+            <span data-trans="max-price"> Max Price:</span>
             <input type="range" min="0" max="1000" value="100" class="filter-price-range"
                 onchange="this.title=this.value;onSetFilterBy({maxPrice: this.value})" />
         </label>
         <label>
-            Min Rate:
+            <span data-trans="min-rate">Min Rate: </span>
             <input type="range" min="0" max="10" value="0" class="filter-rate-range"
                 onchange="this.title=this.value;onSetFilterBy({minRate: this.value})" />
         </label>
         <button class="filter-bookmark" onclick="onFilterBookmark()">⭐</button>
         <div class="input-container">
-            <p class="new-book">Create new book:</p>
-            <input name="add-book-title" type="text" placeholder="Enter Book title" value="">
-            <input name="add-book-price" type="text" placeholder="Enter Book price" value="">
-            <div><button class="input-btn" onclick="onGetInput()">submit</button>
+            <p data-trans="create-new-book" data-trans="create-new-book" class="new-book">Create new book:</p>
+            <input data-trans="title-placeholder" name="add-book-title" type="text" placeholder="Enter Book title"
+                value="">
+            <input data-trans="price-placeholder" name="add-book-price" type="text" placeholder="Enter Book price"
+                value="">
+            <div><button data-trans="submit" class="input-btn" onclick="onGetInput()">submit</button>
             </div>
         </div>
         <table class="book-table">
@@ -45,6 +48,7 @@
             <tbody></tbody>
         </table>
     </div>
+
     <button class="page-btn" onclick="onPrevPage()">◀</button>
     <span class="page-btn-container"></span>
     <button class="page-btn" onclick="onNextPage()">▶</button>
@@ -60,8 +64,15 @@
                 class="rating">0</span><button onclick="onIncreaseRate(this.parentElement)">+</button></div>
         <button class="close-modal-btn" onclick="onCloseModal(this.parentElement)">Back</button>
     </div>
+    <div class="trans-container">
+        <select onchange="onSetLang(this.value)">
+            <option value="en">English</option>
+            <option value="he">עברית</option>
+            <option value="es">Spanish</option>
+        </select>
+    </div>
     <script src="lib/jquery/jquery.js"></script>
-    <script src="js/services/i18n-service.js.js"></script>
+    <script src="js/services/i18n-service.js"></script>
     <script src="js/services/util.service.js"></script>
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/book.service.js"></script>
