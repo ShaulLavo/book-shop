@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Spline+Sans+Mono&display=swap');
+
+* {
+	font-family: 'Spline Sans Mono', monospace;
+}
+body {
+	text-align: center;
+	margin: 0;
+	background-color: rgb(245, 245, 240);
+	color: rgb(34, 34, 34);
+	text-align: center;
+}
+button {
+	cursor: pointer;
+}
+.book-table {
+	margin: auto;
+	min-width: 60em;
+}
+
+.book-table th {
+	border: solid 1px rgb(31, 31, 31);
+	padding: 5px;
+}
+.title {
+	text-align: left;
+}
+.book-table tbody td {
+	border: solid 1px rgba(128, 128, 128, 0.303);
+	padding: 10px;
+}
+.book-table thead {
+	background-color: rgba(222, 222, 222, 0.403);
+}
+.book-table tbody tr {
+	background-color: rgba(216, 221, 241, 0.246);
+}
+.book-table tbody tr:nth-child(odd) {
+	background-color: rgba(222, 222, 222, 0.297);
+}
+.new-book {
+	margin-top: 30px;
+	color: rgb(33, 33, 33);
+	text-decoration: underline;
+}
+
+.book-info {
+	display: none;
+	width: 40vw;
+	min-height: 100vh;
+	background-color: rgb(216, 232, 232);
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 30px;
+}
+
+.book-img {
+	width: 200px;
+}
+
+.rating-container {
+	padding: 10px;
+}
+.rating {
+	padding: 5px;
+}
+
+.close-modal-btn {
+	margin-top: 80px;
+	font-size: 1.3em;
+}
+
+.bookmark {
+	font-size: 35px;
+}
+
+.bookmark:hover {
+	filter: brightness(1.75);
+}
+
+.filter-bookmark {
+	font-size: 20px;
+}
+
+.input-container > * {
+	margin: 2px;
+}
+.input-container {
+	margin-top: 20px;
+}
+.sort-btn-container > * {
+	all: unset;
+	cursor: pointer;
+}
+
+.sort-btn-container > *:focus {
+	outline: rgb(217, 217, 217) auto;
+}
+.curr-page {
+	background: #b1bbda9f;
+}
+.page-btn {
+	background: #ededed;
+	border: 1px solid #ccc;
+	padding: 3px 8px;
+	border-radius: 3px;
+	cursor: pointer;
+	font-size: 18px;
+}

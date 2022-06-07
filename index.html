@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>book-shop</title>
+</head>
+
+<body onload="init()" onkeydown="handleKeyDown(event)">
+    <div class="table-container">
+        <h1>Welcome to my bookshop</h1>
+        <span>descending:<input type="checkbox" oninput="onSetDescSort()"></span>
+        <select onchange="onSortBy(this.value)">
+            <option selected hidden>Sort by</option>
+            <option value="title">Title</option>
+            <option value="price">Price</option>
+            <option value="rate">Rate</option>
+        </select>
+        <label>
+            Max Price:
+            <input type="range" min="0" max="1000" value="100" class="filter-price-range"
+                onchange="this.title=this.value;onSetFilterBy({maxPrice: this.value})" />
+        </label>
+        <label>
+            Min Rate:
+            <input type="range" min="0" max="10" value="0" class="filter-rate-range"
+                onchange="this.title=this.value;onSetFilterBy({minRate: this.value})" />
+        </label>
+        <button class="filter-bookmark" onclick="onFilterBookmark()">⭐</button>
+        <div class="input-container">
+            <p class="new-book">Create new book:</p>
+            <input name="add-book-title" type="text" placeholder="Enter Book title" value="">
+            <input name="add-book-price" type="text" placeholder="Enter Book price" value="">
+            <div><button class="input-btn" onclick="onGetInput()">submit</button>
+            </div>
+        </div>
+        <table class="book-table">
+            <thead> </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <button class="page-btn" onclick="onPrevPage()">◀</button>
+    <span class="page-btn-container"></span>
+    <button class="page-btn" onclick="onNextPage()">▶</button>
+    <div class="book-info">
+        <h1>book title</h1>
+        <img class="book-img" src="img/book-preview.png" alt="book img">
+        <p>Book price: <span class="price"></span> </p>
+        <span onclick="onBookmark(this)" class="bookmark">🖤</span>
+        <p>description:</p>
+        <p class="txt">txt</p>
+        <p>rating:</p>
+        <div class="rating-container"><button onclick="onReduceRate(this.parentElement)">-</button><span
+                class="rating">0</span><button onclick="onIncreaseRate(this.parentElement)">+</button></div>
+        <button class="close-modal-btn" onclick="onCloseModal(this.parentElement)">Back</button>
+    </div>
+
+
+    <script src="js/services/util.service.js"></script>
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/book.service.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
