@@ -268,8 +268,10 @@ function onSetLang(lang) {
 function onDarkMode(elBtn) {
 	const elTable = document.querySelector('.book-table')
 	const body = document.querySelector('body')
+	const elBookInfo = document.querySelector('.book-info')
 	elTable.classList.toggle('table-dark')
 	body.classList.toggle('dark')
+	elBookInfo.classList.toggle('dark-modal')
 	if (elBtn.innerText === '🌚') elBtn.innerText = '🌞'
 	else elBtn.innerText = '🌚'
 }

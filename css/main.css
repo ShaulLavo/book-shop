@@ -51,6 +51,9 @@ button {
 	top: 0;
 	padding: 30px;
 }
+.book-info h1 {
+	margin-top: 30px;
+}
 
 .book-img {
 	width: 200px;
@@ -66,6 +69,9 @@ button {
 .close-modal-btn {
 	margin-top: 80px;
 	font-size: 1.3em;
+	position: absolute;
+	left: 10px;
+	top: -60px;
 }
 
 .bookmark {
@@ -163,4 +169,7 @@ button {
 .dark {
 	background-color: #363a3e;
 	color: rgb(245, 245, 245);
+}
+.dark-modal {
+	background-color: rgb(54, 54, 54);
 }

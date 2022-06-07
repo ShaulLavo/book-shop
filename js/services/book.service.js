@@ -10,7 +10,7 @@ var gIsUpdate = false
 var gIsAsc = true
 var gCurrPage = 0
 var gPageCount = 1
-const MAX_TABLE_SIZE = 5
+const MAX_TABLE_SIZE = 8
 
 function createBooksDef() {
 	createBook('Clean Code', 10.15)
@@ -19,6 +19,12 @@ function createBooksDef() {
 	createBook('Critique of Pure Reason', 999)
 	createBook('Harry Potter and the Deathly Hallows', 154)
 	createBook('Harry Potter and the Goblet of Fire', 255)
+	createBook(`Harry Potter and the Philosopher's Stone`, 818)
+	createBook('Harry Potter and the Order of the Phoenix', 122)
+	createBook('Harry Potter and the Chamber of Secrets', 504)
+	createBook('Harry Potter and the Prisoner of Azkaban', 674)
+	createBook('Girl with the Dragon Tattoo,The:Millennium Trilogy', 222)
+	createBook('One Day', 458)
 }
 
 function getFilteredBooks() {

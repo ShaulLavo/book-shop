@@ -49,22 +49,6 @@
             <tbody></tbody>
         </table>
     </div>
-
-    <button class="page-btn" onclick="onPrevPage()">◀</button>
-    <span class="page-btn-container"></span>
-    <button class="page-btn" onclick="onNextPage()">▶</button>
-    <div class="book-info">
-        <h1>book title</h1>
-        <img class="book-img" src="img/book-preview.png" alt="book img">
-        <p>Book price: <span class="price"></span> </p>
-        <span onclick="onBookmark(this)" class="bookmark">🖤</span>
-        <p>description:</p>
-        <p class="txt">txt</p>
-        <p>rating:</p>
-        <div class="rating-container"><button onclick="onReduceRate(this.parentElement)">-</button><span
-                class="rating">0</span><button onclick="onIncreaseRate(this.parentElement)">+</button></div>
-        <button class="close-modal-btn" onclick="onCloseModal(this.parentElement)">Back</button>
-    </div>
     <div class="trans-container">
         <p data-trans="language">language:</p>
         <select onchange="onSetLang(this.value)">
@@ -77,6 +61,24 @@
         <span data-trans="dark-mode">dark mode:</span>
         <button class="dark-mode-btn btn" onclick="onDarkMode(this)">🌚</button>
     </div>
+    <button class="page-btn" onclick="onPrevPage()">◀</button>
+    <span class="page-btn-container"></span>
+    <button class="page-btn" onclick="onNextPage()">▶</button>
+    <div class="book-info">
+        <h1>book title</h1>
+        <img class="book-img" src="img/book-preview.png" alt="book img">
+        <p>Book price: <span class="price"></span> </p>
+        <span onclick="onBookmark(this)" class="bookmark">🖤</span>
+        <p>description:</p>
+        <p class="txt">txt</p>
+        <p>
+            <span data-trans="rate">rate</span>:
+        </p>
+        <div class="rating-container"><button onclick="onReduceRate(this.parentElement)">-</button><span
+                class="rating">0</span><button onclick="onIncreaseRate(this.parentElement)">+</button></div>
+        <button class="close-modal-btn" onclick="onCloseModal(this.parentElement)">Back</button>
+    </div>
+
     <script src="lib/jquery/jquery.js"></script>
     <script src="js/services/i18n-service.js"></script>
     <script src="js/services/util.service.js"></script>
